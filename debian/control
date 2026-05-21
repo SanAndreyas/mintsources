@@ -24,6 +24,7 @@ Depends: python3-apt,
          inxi,
          lsb-release,
          mint-mirrors,
+         xapp-symbolic-icons,
          ${misc:Depends},
 Replaces: software-properties-common (<< 1),
           software-properties-gtk (<< 1)
