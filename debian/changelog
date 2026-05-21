@@ -1,3 +1,9 @@
+mintsources (2.4.3) alfa; urgency=medium
+
+  * Switch to /usr/bin/mintsources as the main launcher
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 21 May 2026 10:24:59 +0100
+
 mintsources (2.4.2) alfa; urgency=medium
 
   * Set a user agent when using pycurl
