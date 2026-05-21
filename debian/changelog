@@ -1,3 +1,11 @@
+mintsources (2.4.2) alfa; urgency=medium
+
+  * Set a user agent when using pycurl
+  * Depend on xapp-symbolic-icons
+  * polkit: Fix broken action in older releases
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 21 May 2026 09:55:12 +0100
+
 mintsources (2.4.1) alfa; urgency=medium
 
   * polkit: Fix broken action in 26.04
