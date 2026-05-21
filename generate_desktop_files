@@ -12,7 +12,7 @@ gettext.install(DOMAIN, PATH)
 
 prefix = "[Desktop Entry]\n"
 
-suffix = """Exec=pkexec software-sources
+suffix = """Exec=pkexec mintsources
 Icon=mintsources
 Terminal=false
 X-MultipleArgs=false
@@ -43,7 +43,7 @@ suffix = """
       <allow_inactive>auth_admin_keep</allow_inactive>
       <allow_active>auth_admin_keep</allow_active>
     </defaults>
-    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/software-sources</annotate>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/mintsources</annotate>
     <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
   </action>
 
