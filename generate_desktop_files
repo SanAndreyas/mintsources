@@ -12,7 +12,7 @@ gettext.install(DOMAIN, PATH)
 
 prefix = "[Desktop Entry]\n"
 
-suffix = """Exec=pkexec mintsources
+suffix = """Exec=pkexec software-sources
 Icon=mintsources
 Terminal=false
 X-MultipleArgs=false
