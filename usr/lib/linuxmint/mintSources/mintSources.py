@@ -29,6 +29,7 @@ import repolib
 
 from io import BytesIO
 from CountryInformation import CountryInformation
+from pathlib import Path
 
 import apt_pkg
 
@@ -41,6 +42,7 @@ BUTTON_LABEL_MAX_LENGTH = 30
 disable_refresh = False
 sources_changed = False
 
+script_dir = Path(__file__).parent
 FLAG_PATH = "/usr/share/iso-flag-png/%s.png"
 FLAG_SIZE = 16
 
@@ -340,7 +342,7 @@ class Key():
         self.uid = ""
 
     def delete(self):
-        subprocess.call(["apt-key", "del", self.pub])
+        subprocess.call(["./apt-key.sh", "del", self.pub], cwd=script_dir, capture_output=True, text=True)
 
     def get_name(self):
         return "%s\n<small>    %s</small>" % (GLib.markup_escape_text(self.uid), GLib.markup_escape_text(self.pub))
@@ -1293,9 +1295,9 @@ class Application(object):
     def load_keys(self):
         self.keys = []
         key = None
-        output = subprocess.getoutput("apt-key list")
+        output = subprocess.run(["./apt-key.sh", "list"], cwd=script_dir, capture_output=True, text=True)
         lines = []
-        for line in output.split("\n"):
+        for line in output.stdout.split("\n"):
             line = line.strip()
             if line.startswith("/etc/apt"):
                 continue
@@ -1332,7 +1334,7 @@ class Application(object):
         dialog.set_default_response(Gtk.ResponseType.OK)
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
-            subprocess.call(["apt-key", "add", dialog.get_filename()])
+            subprocess.call(["./apt-key.sh", "add", dialog.get_filename()], cwd=script_dir, capture_output=True, text=True)
             self.load_keys()
             self.enable_reload_button()
         dialog.destroy()
