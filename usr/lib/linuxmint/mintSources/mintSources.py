@@ -342,7 +342,7 @@ class Key():
         self.uid = ""
 
     def delete(self):
-        subprocess.call(["./apt-key.sh", "del", self.pub], cwd=script_dir, capture_output=True, text=True)
+        subprocess.run(["./apt-key.sh", "del", self.pub], cwd=script_dir, capture_output=True, text=True)
 
     def get_name(self):
         return "%s\n<small>    %s</small>" % (GLib.markup_escape_text(self.uid), GLib.markup_escape_text(self.pub))
@@ -1334,7 +1334,7 @@ class Application(object):
         dialog.set_default_response(Gtk.ResponseType.OK)
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
-            subprocess.call(["./apt-key.sh", "add", dialog.get_filename()], cwd=script_dir, capture_output=True, text=True)
+            subprocess.run(["./apt-key.sh", "add", dialog.get_filename()], cwd=script_dir, capture_output=True, text=True)
             self.load_keys()
             self.enable_reload_button()
         dialog.destroy()
